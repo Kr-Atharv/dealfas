@@ -1,0 +1,39 @@
+<%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+    <main class="container mx-auto bg-white shadow-lg rounded-lg p-8 mt-10 max-w-6xl">
+      <h2 class="text-3xl text-red-500 font-bold text-center mb-6">
+        My Orders
+      </h2>
+      <% if (!orders || orders.length === 0) { %>
+        <p class="text-center text-gray-600">You have not placed any orders yet.</p>
+      <% } else { %>
+        <div class="overflow-x-auto">
+          <table class="min-w-full border border-gray-200">
+            <thead class="bg-gray-100">
+              <tr>
+                <th class="px-4 py-2 border-b text-left">Product</th>
+                <th class="px-4 py-2 border-b text-left">Seller</th>
+                <th class="px-4 py-2 border-b text-left">Price</th>
+                <th class="px-4 py-2 border-b text-left">Placed At</th>
+                <th class="px-4 py-2 border-b text-left">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% orders.forEach(function(order) { %>
+                <tr class="hover:bg-gray-50">
+                  <td class="px-4 py-2 border-b"><%= order.home ? order.home.houseName : 'Unknown' %></td>
+                  <td class="px-4 py-2 border-b"><%= order.home ? order.home.location : '-' %></td>
+                  <td class="px-4 py-2 border-b">Rs<%= order.home ? order.home.price : '-' %></td>
+                  <td class="px-4 py-2 border-b"><%= order.createdAt.toLocaleString() %></td>
+                  <td class="px-4 py-2 border-b capitalize"><%= order.status %></td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      <% } %>
+    </main>
+  </body>
+</html>

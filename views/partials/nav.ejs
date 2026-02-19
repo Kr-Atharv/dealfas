@@ -1,0 +1,84 @@
+
+<header class="bg-blue-600 text-black p-4 shadow-md">
+  <nav class="container mx-auto flex justify-between items-center">
+    <ul class="flex space-x-4">
+      <li>
+        <a
+          href="/"
+          class="<%= currentPage === 'index' ? 'bg-blue-600' : 'hover:bg-blue-600' %> py-2 px-4 rounded transition duration-300"
+          >Home</a
+        >
+      </li>
+      <li>
+        <a
+          href="/homes"
+          class="<%= currentPage === 'Home' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
+          >Product-List</a
+        >
+      </li>
+      <li>
+        <a
+          href="/favourites"
+          class="<%= currentPage === 'favourites' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
+          >Favourites</a
+        >
+      </li>
+      <li>
+        <a
+          href="/bookings"
+          class="<%= currentPage === 'bookings' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
+          >Orders</a
+        >
+      </li>
+      <li>
+        <a
+          href="/host/host-home-list"
+          class="<%= currentPage === 'host-homes' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
+          >Host Seller</a
+        >
+      </li>
+      <li>
+        <a
+          href="/host/add-home"
+          class="<%= currentPage === 'addHome' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
+          >Add Product</a
+        >
+      </li>
+      <li>
+        <a
+          href="/host/orders"
+          class="<%= currentPage === 'host-orders' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
+          >Buyer Requests</a
+        >
+      </li>
+    </ul>
+    <div class="flex items-center space-x-4">
+      <% if (isAuthenticated) { %>
+        <span class="text-sm text-gray-800">
+          Logged in as <%= currentUser && currentUser.name ? currentUser.name : currentUser.email %>
+        </span>
+        <form action="/logout" method="POST">
+          <button
+            type="submit"
+            class="bg-gray-800 text-white py-2 px-4 rounded transition duration-300 hover:bg-gray-700"
+          >
+            Logout
+          </button>
+        </form>
+      <% } else { %>
+        <a
+          href="/login"
+          class="bg-red-500 text-white py-2 px-4 rounded border border-red-600 transition duration-300 hover:bg-red-600"
+        >
+          Login
+        </a>
+        <a
+          href="/signup"
+          class="bg-red-700 text-white py-2 px-4 rounded transition duration-300 hover:bg-red-800"
+        >
+          Sign Up
+        </a>
+      <% } %>
+    </div>
+  </nav>
+</header>
